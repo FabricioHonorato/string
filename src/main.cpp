@@ -3,6 +3,8 @@
 char palavra[10] = "OLA MUNDO";
 char palavra2[10] = {'O', 'L', 'A', ' ', 'M', 'U', 'N', 'D', 'O', '\0'};
 
+ String nomeCompleto = "Thiago";
+
 void setup() 
 {
   Serial.begin(9600);
@@ -137,7 +139,7 @@ void setup()
 
   else
   {
-    Serial.println("Nao sao iguais");
+    Serial.println("Não são iguais");
   }
 
   novaFrase.concat(" final");
@@ -148,6 +150,18 @@ void setup()
   
   const char* vetorCaracteres = novaFrase.c_str();
   Serial.println(vetorCaracteres);
+
+  //Formatação na exibição
+  char buffer[60]; //defino o maximo de caracter
+
+  int anoAtual = 2026;
+
+ // Serial.printf("Prof: %s Ano Atual: %d", nomeCompleto.c_str(), anoAtual);
+
+  //snprintf: guarda o formato desejado respeitando o buffer estipulado
+  snprintf(buffer, sizeof(buffer), "O prof %s é muito legal\n\rAno Atual: %d\n\r100%%", nomeCompleto.c_str(), anoAtual); 
+
+  Serial.println(buffer);
 
 }
 
